@@ -1,287 +1,376 @@
 # HTML Slides Studio
 
-`html-slides-studio` 是一个 Codex Skill，用来把一份较详细的演讲大纲、文稿或主题材料，转成高审美、可编辑、可导出的单文件 HTML 演示文稿。  
-`html-slides-studio` is a Codex skill for turning a detailed outline, manuscript, or topic brief into a high-aesthetic, editable, exportable single-file HTML slide deck.
+`html-slides-studio` is packaged as a Codex skill for turning a detailed outline, manuscript, or topic brief into a high-aesthetic, editable, exportable single-file HTML slide deck.
 
-这个公开仓库保存的是 **适合公开分享的净化版本**。  
-This public repository contains the **sanitized public version** of the skill.
+`html-slides-studio` 当前以 Codex skill 的形式打包，用来把较详细的大纲、文稿或主题材料，转成高审美、可编辑、可导出的单文件 HTML 演示文稿。
 
-仓库里的模板全部使用占位内容，不包含私人稿件、真实客户材料、二维码或个人联系信息。  
-All templates in this repository use placeholder content and do not include private manuscripts, client materials, QR codes, or personal contact information.
+The packaging in this repository targets Codex directly. The workflow, references, templates, and output format are portable, so they can also be adapted for other coding agents.
 
-## 这是什么 / What This Is
+这个仓库里的直接安装路径面向 Codex；但其中的方法论、参考规则、模板资产和输出形态本身是可迁移的，理论上也可以转化后复用于其他 coding agent。
 
-这个 Skill 不是一个“直接乱生成整场演讲”的工具。  
+This public repository contains the sanitized public version only:
+
+这个公开仓库保存的是脱敏后的公开版本：
+
+- Placeholder content only
+- No real course manuscripts
+- No client materials
+- No personal QR codes or contact details
+
+- 仅包含占位示例内容
+- 不包含真实课程文稿
+- 不包含客户材料
+- 不包含个人二维码或联系方式
+
+---
+
+## Preview
+
+Open the current public example decks:
+
+直接打开当前公开示例：
+
+- [examples/example-b-terminal.html](examples/example-b-terminal.html)
+- [examples/example-c-swiss.html](examples/example-c-swiss.html)
+- [examples/example-d-ink.html](examples/example-d-ink.html)
+
+Static preview images:
+
+静态预览图：
+
+![B Terminal preview](examples/preview-b-terminal.png)
+![C Swiss preview](examples/preview-c-swiss.png)
+![D Ink preview](examples/preview-d-ink.png)
+
+These examples are copied from the standalone public template files, not from the older private training deck.
+
+这些 example 直接对应公开模板，不再沿用之前那套私有培训 deck 的变体。
+
+Public examples currently highlight `B / C / D`. The `A` system shares the generic scaffold-backed warm-editorial base used by `template-a-warm-editorial.html` and `slides-template-v3.html`.
+
+当前公开 example 先展示 `B / C / D` 三套；`A` 风格对应的是由 `template-a-warm-editorial.html` 和 `slides-template-v3.html` 共同承载的暖纸编辑基底。
+
+---
+
+## What This Is
+
 This skill is not meant to blindly invent an entire talk from scratch.
 
-它的核心用途是：  
-Its core purpose is:
+这个 Skill 不是“随便给一句主题就替你乱生成整场演讲”的工具。
 
-1. 先接收你已经有的内容框架  
-   Start from material you already have
-2. 先规划页纲，再生成页面  
-   Plan the slide list first, then generate slides
-3. 用更适合 AI 编辑的 HTML，而不是传统 PPT  
-   Use AI-friendly HTML instead of traditional PPT
-4. 交付一个可继续编辑、可导出 PDF 的演示文稿  
-   Deliver a deck that remains editable and can be exported to PDF
+Its core workflow is:
 
-它适合这些场景：  
-It is useful for:
+它的核心工作流是：
 
-- 课程培训  
-  Training sessions
-- 主题演讲  
-  Talks and keynote-style presentations
-- 高审美展示页  
-  High-aesthetic presentation decks
-- 需要交互、动画或演讲者视图的 slides  
-  Slides that need interaction, animation, or presenter view
+1. Choose a design language
+2. Fill in the missing talk inputs
+3. Plan the full page list first
+4. Wait for confirmation
+5. Generate or revise the final HTML deck
 
-## 核心工作流 / Core Workflow
+1. 先选设计语言
+2. 再补齐演讲信息
+3. 先规划整套页纲
+4. 等确认后再生成
+5. 再输出或修改最终 HTML
 
-这个 Skill 会强制采用更稳定的工作流，而不是直接开始写代码。  
-The skill enforces a more reliable workflow instead of jumping straight into code.
+This structure is the main quality guardrail of the skill.
 
-1. 先选择设计风格  
-   Choose a design language first
-2. 补齐输入信息  
-   Fill in the missing talk inputs
-3. 先规划完整页纲  
-   Plan the full page list first
-4. 等用户确认  
-   Wait for user confirmation
-5. 再生成或修改最终 HTML  
-   Then generate or revise the final HTML deck
+“先规划、后生成”这层结构，是它最重要的质量护栏。
 
-这比“先出代码再慢慢返工”更稳定。  
-This is much more reliable than generating code first and fixing structure later.
+---
 
-## 四套设计语言 / Four Design Languages
+## Portability
 
-Skill 自带四套视觉系统：  
+Direct installation in this repository is Codex-specific:
+
+这个仓库里的直接安装方式是 Codex 专用的：
+
+- `SKILL.md` and `agents/openai.yaml` follow Codex skill conventions
+- the trigger form is `Use $html-slides-studio ...`
+- the example install path is `~/.codex/skills/...`
+
+- `SKILL.md` 和 `agents/openai.yaml` 遵循的是 Codex skill 约定
+- 触发形式是 `Use $html-slides-studio ...`
+- 示例安装路径是 `~/.codex/skills/...`
+
+What is portable across other coding agents:
+
+真正可迁移到其他 coding agent 的部分是：
+
+- the deck-planning workflow
+- the design-language rules
+- the implementation constraints
+- the HTML templates and scaffold assets
+- the example output format
+
+- 页纲优先的生成流程
+- 四套设计语言规则
+- 实现约束和质量标准
+- HTML 模板与脚手架资产
+- 最终输出形态
+
+If you use another coding agent, do not assume it can install this folder unchanged. Reuse the templates, references, and workflow rules, then adapt them to that agent's own packaging mechanism.
+
+如果你使用的是别的 coding agent，不要假设它能原样安装这个文件夹。更合理的做法是复用模板、references 和工作流规则，再按该 agent 自己的封装方式转写。
+
+---
+
+## Why HTML Instead Of PPT
+
+The point is not novelty for its own sake. In high-interaction, high-aesthetic, fast-iteration scenarios, HTML is often a better medium for AI-assisted editing than PPT.
+
+重点不是“为了炫技而不用 PPT”，而是在高交互、高审美、频繁迭代的场景里，HTML 往往比 PPT 更适合作为 AI 参与编辑的媒介。
+
+- HTML/CSS/JS is plain text, so AI can patch it precisely
+- Presentation and editing can coexist in the same file
+- Front-end interaction and motion are more flexible than traditional PPT
+- Versioning and template reuse are easier
+
+- HTML/CSS/JS 是纯文本，AI 更容易做局部修改
+- 展示和编辑可以共存于同一个文件
+- 前端交互和动效的自由度高于传统 PPT
+- 更容易做版本管理和模板复用
+
+---
+
+## Four Design Languages
+
 The skill ships with four visual systems:
+
+内置四套设计语言：
 
 1. `A · Warm Editorial / 暖纸编辑`
 2. `B · Dark Terminal / 深空终端`
 3. `C · Swiss Grid / 包豪斯网格`
 4. `D · Japanese Ink / 日式墨稿`
 
-模板文件位于：  
-Template files are located in:
+Primary template assets:
 
-- `assets/template-a-warm-editorial.html`
-- `assets/template-b-terminal.html`
-- `assets/template-c-swiss.html`
-- `assets/template-d-ink.html`
+主要模板资产：
 
-## 功能概览 / Feature Overview
+- [assets/template-a-warm-editorial.html](assets/template-a-warm-editorial.html)
+- [assets/template-b-terminal.html](assets/template-b-terminal.html)
+- [assets/template-c-swiss.html](assets/template-c-swiss.html)
+- [assets/template-d-ink.html](assets/template-d-ink.html)
 
-目前这个 Skill 的公开版能力包括：  
-The public version of the skill currently includes:
+---
 
-- 单文件 HTML 输出  
-  Single-file HTML output
-- 16:9 演讲比例  
-  16:9 presentation layout
-- 先页纲确认，再生成代码  
-  Page-plan confirmation before code generation
-- 演讲者视图 / speaker notes  
-  Presenter view / speaker notes
-- 前端编辑模式  
-  Front-end edit mode
-- 自动保存本地草稿  
-  Local autosave for edits
-- `Ctrl+S` / `Cmd+S` 保存整份 HTML  
-  `Ctrl+S` / `Cmd+S` saves the full HTML document
-- 图片插入、拖拽、缩放  
-  Image insertion, drag, and resize
-- `@media print` 导出逐页 PDF 的基础支持  
-  Base support for per-slide PDF export through `@media print`
+## Feature Overview
 
-关于“保存”的实际行为，需要说明清楚：  
-The save behavior has one important implementation detail:
+The public version currently includes:
 
-- 如果浏览器支持 File System Access API，且用户授权，页面可以直接写回 `.html` 文件  
-  If the browser supports the File System Access API and the user grants permission, the page can write back directly to the `.html` file
-- 如果浏览器不支持，或者当前环境无法直接写回，就会退化为下载一份完整更新后的 HTML 文件  
-  If direct write-back is unavailable, it falls back to downloading a fully updated HTML file
+公开版当前包括：
 
-## 仓库结构 / Repository Structure
+- Single-file HTML output
+- 16:9 slide layout
+- Page-plan confirmation before code generation
+- Presenter view / speaker notes
+- Front-end edit mode
+- Local autosave
+- `Ctrl+S` / `Cmd+S` full-document save
+- Full HTML serialization
+- Image insertion, drag, and resize
+- Print CSS for per-slide PDF export
+
+- 单文件 HTML 输出
+- 16:9 演示比例
+- 先确认页纲，再生成代码
+- 演讲者视图 / speaker notes
+- 前端编辑模式
+- 本地自动保存
+- `Ctrl+S` / `Cmd+S` 保存整份 HTML
+- 完整 HTML 序列化保存
+- 图片插入、拖拽与缩放
+- 逐页 PDF 导出所需的打印样式
+
+Save behavior:
+
+保存行为说明：
+
+- If File System Access API is available and permission is granted, the deck can write back directly to the `.html` file
+- Otherwise it falls back to downloading a fully updated HTML file
+
+- 如果浏览器支持 `File System Access API` 且用户授权，页面可以直接写回 `.html` 文件
+- 如果当前环境不支持，就会退化为下载一份完整更新后的 HTML 文件
+
+---
+
+## Repository Structure
 
 ```text
 .
-├─ SKILL.md
-├─ README.md
-├─ agents/
-│  └─ openai.yaml
-├─ assets/
-│  ├─ slides-template-v3.html
-│  ├─ template-a-warm-editorial.html
-│  ├─ template-b-terminal.html
-│  ├─ template-c-swiss.html
-│  └─ template-d-ink.html
-├─ references/
-│  ├─ content-playbook.md
-│  ├─ design-rules.md
-│  └─ implementation-rules.md
-└─ scripts/
-   └─ new_slides.ps1
+├── SKILL.md
+├── README.md
+├── LICENSE
+├── agents/
+│   └── openai.yaml
+├── assets/
+│   ├── slides-template-v3.html
+│   ├── template-a-warm-editorial.html
+│   ├── template-b-terminal.html
+│   ├── template-c-swiss.html
+│   └── template-d-ink.html
+├── examples/
+│   ├── example-b-terminal.html
+│   ├── example-c-swiss.html
+│   ├── example-d-ink.html
+│   └── README.md
+├── references/
+│   ├── content-playbook.md
+│   ├── design-rules.md
+│   └── implementation-rules.md
+└── scripts/
+    ├── new_slides.ps1
+    └── new_slides.sh
 ```
 
-简要说明：  
 Quick explanation:
 
-- `SKILL.md`：给 Codex 看的主技能说明  
-  `SKILL.md`: the main machine-facing instruction file for Codex
-- `README.md`：给人看的仓库介绍  
-  `README.md`: the human-facing repository introduction
-- `assets/`：模板资产  
-  `assets/`: template assets
-- `references/`：规则、流程、设计语言说明  
-  `references/`: rules, workflow notes, and design-language references
-- `scripts/`：辅助脚本  
-  `scripts/`: helper scripts
+简要说明：
 
-## 安装方式 / Installation
+- `SKILL.md`: machine-facing instruction file for the Codex package
+- `README.md`: human-facing repository introduction
+- `LICENSE`: repository license for reuse and redistribution
+- `assets/template-*.html`: style-specific public templates
+- `assets/slides-template-v3.html`: generic scaffold with edit/save/export behaviors, used by the scaffold scripts and as the warm-editorial fallback base
+- `examples/`: public example decks for visual inspection
+- `references/`: workflow, design, and implementation rules
+- `scripts/`: scaffold helpers
 
-如果你使用 Codex 本地技能目录，可以把这个文件夹复制进去。  
+- `SKILL.md`：给 Codex 读取的主技能说明
+- `README.md`：给人看的仓库介绍
+- `LICENSE`：仓库复用与再分发的许可说明
+- `assets/template-*.html`：分风格的公开模板
+- `assets/slides-template-v3.html`：带编辑 / 保存 / 导出能力的通用脚手架，也是暖纸编辑风格的回退基础模板，并被脚手架脚本直接调用
+- `examples/`：公开示例成品，用来直接看效果
+- `references/`：工作流、设计规则、实现约束
+- `scripts/`：脚手架脚本
+
+---
+
+## Installation
+
 If you use local Codex skills, copy this folder into your Codex skills directory.
 
-Windows 常见路径：  
-Typical path on Windows:
+如果你使用本地 Codex skills，把这个文件夹复制到本地 Codex skills 目录即可。
+
+Typical paths:
+
+常见路径：
 
 ```text
+Windows:
 C:\Users\<your-user>\.codex\skills\html-slides-studio
-```
 
-macOS / Linux 常见路径：  
-Typical path on macOS / Linux:
-
-```text
+macOS / Linux:
 ~/.codex/skills/html-slides-studio
 ```
 
-安装后，在对话中可以这样触发：  
-After installation, trigger it like this:
+Trigger it in chat like this:
+
+触发方式示例：
 
 ```text
 Use $html-slides-studio ...
 ```
 
-## 怎么使用 / How To Use
+If you use another coding agent, use this repo as a portable reference package rather than assuming drop-in installation.
 
-这个 Skill 最适合的输入，不是一句空泛主题，而是这些信息：  
-This skill works best when the input is not just a vague topic, but includes:
+如果你使用的是其他 coding agent，更适合把这个仓库当成“可迁移的参考包”，而不是直接假设可以原样即装即用。
 
-- 演讲标题  
-  A talk title
-- 听众画像  
-  Audience profile
-- 时长  
-  Duration
-- 比较详细的大纲  
-  A reasonably detailed outline
-- 特殊要求  
-  Special requirements
+---
 
-一个最小可用示例如下：  
-A minimal workable example looks like this:
+## Quick Start
+
+This skill works best when the input is not just a vague topic, but a reasonably detailed outline.
+
+这个 Skill 最适合处理“已经有结构的内容”，而不是一句很空的主题。
+
+Minimal prompt example:
+
+最小输入示例：
 
 ```text
-风格选择：A
-演讲标题：你的标题
-副标题/关键词：可空
-演讲者：你的名字 / 机构 / 日期
-时长：45 分钟
-听众：律师 / 程序员 / 投资人 / 大众
+Use $html-slides-studio
 
-大纲：
-Part 1 - 问题
-  1.1 旧流程的摩擦
-  1.2 为什么是现在
-Part 2 - 方法
-  2.1 工作流
-  2.2 演示
-Part 3 - 行动
-  3.1 风险
-  3.2 下一步
+Style: A
+Title: Your Talk Title
+Subtitle / Keywords: Optional
+Speaker: Your Name / Org / Date
+Duration: 45 minutes
+Audience: lawyers / consultants / engineers / general audience
 
-特殊要求：
-- 需要截图
-- 需要讲稿提示
-- 需要 PDF 导出兼容
+Outline:
+Part 1 - Problem
+  1.1 Friction in the current workflow
+  1.2 Why now
+Part 2 - Method
+  2.1 New workflow
+  2.2 Demo
+Part 3 - Action
+  3.1 Risks
+  3.2 Next step
+
+Special requirements:
+- speaker notes
+- image placeholders
+- PDF export compatibility
 ```
 
-你也可以这样直接发 prompt：  
-You can also trigger it with prompts like:
+You can also use it to revise an existing HTML deck instead of starting from scratch.
 
-```text
-Use $html-slides-studio to turn my detailed outline into a single-file HTML slide deck.
+它也可以直接用来修改现有 HTML deck，而不是从零开始。
+
+---
+
+## Scaffold Scripts
+
+PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ./scripts/new_slides.ps1 -OutputPath ./my-deck.html
 ```
 
-```text
-Use $html-slides-studio. Start by asking me to choose A/B/C/D, then help me plan the deck before writing code.
+Shell:
+
+```bash
+sh ./scripts/new_slides.sh --output ./my-deck.html
 ```
 
-```text
-Use $html-slides-studio to revise this existing HTML deck, keep the interaction quality high, and add edit/save behavior.
-```
+Optional watermark arguments:
 
-## 为什么是 HTML 而不是 PPT / Why HTML Instead Of PPT
+可选水印参数：
 
-这个 Skill 的出发点不是“为了炫技”，而是因为 HTML 更适合 AI 和人一起迭代。  
-The point of this skill is not novelty for its own sake, but the fact that HTML is easier for both AI and humans to iterate on.
+- PowerShell: `-WatermarkMain "Studio" -WatermarkSub "Public Example"`
+- Shell: `--watermark-main "Studio" --watermark-sub "Public Example"`
 
-原因包括：  
-Reasons include:
-
-- HTML/CSS/JS 是纯文本，AI 更容易局部修改  
-  HTML/CSS/JS is plain text, so AI can modify it more precisely
-- 前端交互和动画比传统 PPT 更自由  
-  Front-end interaction and animation are more flexible than traditional PPT
-- 可以把“展示”和“编辑”放在同一个页面里  
-  Presentation and editing can coexist in the same page
-- 更容易做版本管理和复用模板  
-  Versioning and template reuse are easier
-
-## 公开版边界 / Public-Safe Boundary
-
-这个仓库是公开分享版，因此做了明确裁剪：  
-This repository is the public-safe version, so it has been deliberately trimmed.
-
-- 使用占位内容，不放真实课程稿件  
-  Placeholder content only, no real course manuscripts
-- 不放个人二维码  
-  No personal QR codes
-- 不放真实客户资料  
-  No client materials
-- 不放你的私人联系信息  
-  No private contact details
-- 不放你之前做过的真实课件原文  
-  No verbatim reuse of your previous real decks
-
-如果你要做自己的正式版本，建议在本地安装后自行替换内容。  
-If you want to build your real production version, install the skill locally and replace the placeholders there.
-
-## 适合谁 / Who This Is For
-
-这个仓库尤其适合：  
-This repository is especially useful for:
-
-- 想用 HTML 代替 PPT 的内容创作者  
-  Content creators who want HTML instead of PPT
-- 需要高审美课件的人  
-  People who care about presentation aesthetics
-- 想把大纲稳定转成演示稿的人  
-  People who want a reliable outline-to-deck workflow
-- 想做“先页纲确认，再生成代码”流程的人  
-  People who want a page-planning-first workflow
+---
 
 ## License
 
-当前仓库默认没有附带单独的 license 文件。  
-This repository currently does not include a separate license file by default.
+This repository is released under the MIT License.
 
-如果你希望别人明确知道是否可以复用、修改或商用，建议补一个 `LICENSE`。  
-If you want others to clearly know whether reuse, modification, or commercial use is allowed, add a `LICENSE` file.
+这个仓库采用 MIT License。
+
+MIT allows copying, modification, redistribution, and commercial use, as long as the copyright notice and license text are retained.
+
+MIT 允许复制、修改、再分发和商用，但需要保留版权声明和许可文本。
+
+---
+
+## Public-Safe Boundary
+
+This repository is the public-safe version.
+
+这是公开可分享的安全版本。
+
+- No real client or course source material
+- No personal contact data
+- No private QR codes
+- No direct reuse of the original private training content
+
+- 不含真实客户或课程源材料
+- 不含个人联系方式
+- 不含私有二维码
+- 不直接复用原始私有培训内容

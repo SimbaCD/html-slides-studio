@@ -7,7 +7,9 @@ description: "Create or revise high-aesthetic single-file HTML slide decks from 
 
 Assume the user already has material. Prefer transforming a detailed outline or manuscript into slides. Do not invent the entire talk unless the user explicitly asks.
 
-Keep the skill portable. Use only relative paths inside the skill folder so the folder can be committed to GitHub or another repo as-is.
+Critical: this skill transforms existing material. Never invent the whole talk. Ask for missing structural details instead of hallucinating chapters.
+
+Keep the skill portable. Use only relative paths inside the skill folder so the folder can be committed to GitHub or another repo as-is. The packaged trigger path is Codex, but the references, templates, and scaffold assets should stay reusable for adaptation into other coding-agent environments.
 
 ## First response
 
@@ -53,6 +55,7 @@ If the user has already chosen a style or already supplied some fields, do not a
    - `B`: `assets/template-b-terminal.html`
    - `C`: `assets/template-c-swiss.html`
    - `D`: `assets/template-d-ink.html`
+   `assets/slides-template-v3.html` is the generic edit/save/export-capable scaffold used by the scaffold scripts and as the fallback base for style A. Do not treat it as a dead asset.
 7. Keep the result at or above the aesthetic and interaction quality of the user's approved reference deck. Do not regress to generic, lightweight, or template-looking slides.
 8. Prefer HTML/CSS/JS edits over rebuilding from scratch when the user provides an existing deck.
 
